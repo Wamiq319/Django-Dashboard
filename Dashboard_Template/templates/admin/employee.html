@@ -1,0 +1,184 @@
+{% load static %}
+
+<div class="table-container">
+  <table id="doctorTable">
+    <div class="table-top">
+      <h2 class="table-title">DOCTORS</h2>
+      <span class="pagination" id="pagination">
+        <!-- Pagination links will be populated by JavaScript -->
+      </span>
+    </div>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Specialization</th>
+        <th>ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for doctor in doctors %}
+      <tr>
+        <td>{{ doctor.id }}</td>
+        <td>{{ doctor.name }}</td>
+        <td>{{ doctor.specialization }}</td>
+        <td>{{ doctor.specialization }}</td>
+        <td>
+          <button class="btn-edit" aria-label="Edit">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn-delete" aria-label="Delete">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  const doctorsData = [
+    { id: 1, name: "Dr. John Doe", specialization: "Cardiologist" },
+    { id: 2, name: "Dr. Jane Smith", specialization: "Neurologist" },
+    { id: 3, name: "Dr. Emily Johnson", specialization: "Pediatrician" },
+    { id: 4, name: "Dr. Michael Brown", specialization: "Orthopedic" },
+    { id: 5, name: "Dr. Sarah Davis", specialization: "Dermatologist" },
+    { id: 6, name: "Dr. James Wilson", specialization: "General Practitioner" },
+    { id: 7, name: "Dr. Patricia Garcia", specialization: "Radiologist" },
+    { id: 8, name: "Dr. Robert Martinez", specialization: "Oncologist" },
+    { id: 9, name: "Dr. Jennifer Lee", specialization: "Surgeon" },
+    { id: 10, name: "Dr. David Lopez", specialization: "Gastroenterologist" },
+    { id: 11, name: "Dr. Linda Walker", specialization: "Psychiatrist" },
+    { id: 12, name: "Dr. Charles Hall", specialization: "Ophthalmologist" },
+    { id: 13, name: "Dr. Susan Allen", specialization: "ENT Specialist" },
+    { id: 14, name: "Dr. Thomas Young", specialization: "Urologist" },
+    { id: 15, name: "Dr. Elizabeth King", specialization: "Endocrinologist" },
+    { id: 16, name: "Dr. Daniel Wright", specialization: "Anesthesiologist" },
+    { id: 17, name: "Dr. Karen Scott", specialization: "Pathologist" },
+    { id: 18, name: "Dr. Nancy Green", specialization: "Plastic Surgeon" },
+    {
+      id: 19,
+      name: "Dr. Brian Adams",
+      specialization: "Cardiothoracic Surgeon",
+    },
+    { id: 20, name: "Dr. Margaret Nelson", specialization: "Rheumatologist" },
+    {
+      id: 21,
+      name: "Dr. Joseph Hill",
+      specialization: "Infectious Disease Specialist",
+    },
+    { id: 22, name: "Dr. Lisa Carter", specialization: "Family Medicine" },
+    { id: 23, name: "Dr. Michael Torres", specialization: "Internal Medicine" },
+    { id: 24, name: "Dr. Karen Murphy", specialization: "Emergency Medicine" },
+    { id: 25, name: "Dr. Anthony Rivera", specialization: "Public Health" },
+  ];
+
+  const rowsPerPage = 5;
+  let currentPage = 1;
+
+  function displayDoctors(page) {
+    const tableBody = document.querySelector("#doctorTable tbody");
+    tableBody.innerHTML = ""; // Clear existing rows
+
+    const start = (page - 1) * rowsPerPage;
+    const end = Math.min(start + rowsPerPage, doctorsData.length);
+
+    for (let i = start; i < end; i++) {
+      const doctor = doctorsData[i];
+      const row = document.createElement("tr");
+      row.innerHTML = `
+      <td>${doctor.id}</td>
+      <td>${doctor.name}</td>
+      <td>${doctor.specialization}</td>
+      <td>
+        <button class="btn-edit" aria-label="Edit" onclick="editDoctor(${doctor.id})">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="btn-delete" aria-label="Delete" onclick="deleteDoctor(${doctor.id})">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    `;
+      tableBody.appendChild(row);
+    }
+  }
+
+  function editDoctor(id) {
+    // Implement your edit logic here
+    alert(`Edit doctor with ID: ${id}`);
+  }
+
+  function deleteDoctor(id) {
+    // Implement your delete logic here
+    const confirmDelete = confirm(
+      `Are you sure you want to delete doctor with ID: ${id}?`
+    );
+    if (confirmDelete) {
+      // Logic to delete the doctor
+      alert(`Deleted doctor with ID: ${id}`);
+    }
+  }
+
+  function setupPagination() {
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = ""; // Clear existing pagination
+
+    const totalPages = Math.ceil(doctorsData.length / rowsPerPage);
+    const displayPages = [];
+    const maxVisible = 1; // Number of visible pages before and after the current page
+
+    // Always add the first page
+    displayPages.push(1);
+
+    // If we're more than 2 pages in, add ellipsis
+    if (currentPage > 2) {
+      displayPages.push("...");
+    }
+
+    // Add surrounding page numbers
+    for (
+      let i = Math.max(2, currentPage - maxVisible);
+      i <= Math.min(totalPages - 1, currentPage + maxVisible);
+      i++
+    ) {
+      displayPages.push(i);
+    }
+
+    // If we're not on the last two pages, add ellipsis before the last page
+    if (currentPage < totalPages - 1) {
+      displayPages.push("...");
+    }
+
+    // Always add the last page if not already added
+    if (totalPages > 1) {
+      displayPages.push(totalPages);
+    }
+
+    // Create pagination elements
+    displayPages.forEach((page) => {
+      const pageLink = document.createElement("a");
+      pageLink.href = "#";
+      pageLink.textContent = page;
+
+      if (page === currentPage) {
+        pageLink.classList.add("ActivePage"); // Highlight the current page
+      } else {
+        pageLink.onclick = () => changePage(page); // Add click handler for other pages
+      }
+
+      pagination.appendChild(pageLink);
+    });
+  }
+
+  function changePage(page) {
+    currentPage = page;
+    displayDoctors(currentPage);
+    // setupPagination();
+  }
+
+  // Initial display
+  displayDoctors(currentPage);
+  setupPagination();
+</script>

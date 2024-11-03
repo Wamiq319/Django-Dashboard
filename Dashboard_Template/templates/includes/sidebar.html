@@ -1,0 +1,126 @@
+{% load static %}
+<div class="sidebar">
+  <!-- SIDEBAR HEADER  -->
+  <div class="sidebar-header">
+    <span class="BrandName menu-text"> MEDIPLUS </span>
+    <img
+      src="{% static 'images/Logo.svg' %}"
+      alt="icon"
+      width="25"
+      height="25"
+      style="margin-left: 2px"
+    />
+    <span class="sidebar-hamburger">
+      <i class="fas fa-bars"></i>
+    </span>
+  </div>
+  <!-- FIRST MENU  -->
+  <div>
+    <span class="menu-heading">MAIN MENU</span>
+    <ul class="sidebar-menu">
+      <li>
+        <a class="sidebar-menu-item">
+          <i class="sidebar-icon fas fa-tachometer-alt"></i>
+          <span class="menu-text">DashBoard</span>
+        </a>
+      </li>
+
+      <li class="sidebar-menu-parent">
+        <a class="sidebar-menu-item">
+          <i class="sidebar-icon fas fa-user-md"></i>
+          <span class="menu-text">Employees</span>
+          <i class="sidebar-icon fas fa-chevron-right"></i>
+        </a>
+        <ul class="submenu-container" style="list-style: none">
+          <li>
+            <a class="sidebar-sub-menu-item">
+              <i class="sidebar-icon fas fa-user-md"></i>
+              <span class="sub-menu-text">Doctors</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar-sub-menu-item">
+              <i class="sidebar-icon fas fa-user-nurse"></i>
+              <span class="sub-menu-text">Nurses</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar-sub-menu-item">
+              <i class="sidebar-icon fas fa-user-plus"></i>
+              <span class="sub-menu-text">ADD</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a class="sidebar-menu-item">
+          <i class="sidebar-icon fas fa-database"></i>
+          <span class="menu-text">Management</span>
+        </a>
+      </li>
+
+      <li class="sidebar-menu-parent">
+        <a class="sidebar-menu-item">
+          <i class="sidebar-icon fas fa-user-md"></i>
+          <span class="menu-text">Patients</span>
+          <i class="sidebar-icon fas fa-chevron-right"></i>
+        </a>
+        <ul class="submenu-container" style="list-style: none">
+          <li>
+            <a class="sidebar-sub-menu-item">
+              <i class="sidebar-icon fas fa-file-medical"></i>
+              <span class="sub-menu-text">Detail</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar-sub-menu-item">
+              <i class="sidebar-icon fas fa-user-plus"></i>
+              <span class="sub-menu-text">ADD</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- SECONDD MENU -->
+  <div>
+    <span class="menu-heading">ACCOUNT</span>
+    <ul class="sidebar-menu">
+      <li>
+        <a class="sidebar-menu-item">
+          <i class="sidebar-icon fa-solid fa-gear"></i>
+          <span class="menu-text">Settings</span>
+        </a>
+      </li>
+
+      <li class="sidebar-menu-parent">
+        <a class="sidebar-menu-item">
+          <i class="sidebar-icon fas fa-bell"></i>
+          <span class="menu-text">Notification</span>
+          <i class="sidebar-icon fas fa-chevron-right"></i>
+        </a>
+        <ul class="submenu-container" style="list-style: none">
+          <li>
+            <a class="sidebar-sub-menu-item">
+              <i class="sidebar-icon fas fa-bell l"></i>
+              <span class="sub-menu-text">Read</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar-sub-menu-item">
+              <i class="sidebar-icon fas fa-bell"></i>
+              <span class="sub-menu-text">UNREAD</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- SIDEBAR FOOTER  -->
+  <div class="sidebar-footer"></div>
+</div>

@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Dashboard{% endblock %}</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/darkTheme-styles.css' %}" />
+
+    <!-- <link rel="stylesheet" href="{% static 'css/lightTheme-styles.css' %}" /> -->
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <!-- Additional CSS block for extending styles in child templates -->
+    {% block extra_css %}{% endblock %}
+  </head>
+
+  <body>
+    <div style="display: flex; justify-content: flex-end">
+      <div class="sidebar-wrapper">{% include 'includes/sidebar.html' %}</div>
+
+      <div class="page-content">
+        <!-- Header Section -->
+        {% include 'includes/header.html' %}
+        <!-- Main Content Section -->
+        <div class="main-content" style="width: 98%">
+          {% include 'admin/dashboard.html' %}
+        </div>
+      </div>
+    </div>
+    <div class="footer-wrapper" style="width: 100%; margin: 5px auto">
+      {% include 'includes/footer.html' %}
+    </div>
+
+    <!-- Main JS -->
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <!-- Additional JS block for extending scripts in child templates -->
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,113 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/darkTheme-styles.css' %}" />
+
+    <!-- <link rel="stylesheet" href="{% static 'css/lightTheme-styles.css' %}" /> -->
+
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="register-body">
+      <div class="register-container" style="padding: 5px 40px">
+        <div
+          class="field-box"
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <input
+            type="file"
+            id="image-upload"
+            name="profile_image"
+            accept="image/*"
+            style="display: none"
+            onchange="previewImage(event)"
+          />
+          <img
+            id="image-preview"
+            src="{% static 'images/defaultSignupImage.png' %}"
+            style="
+              width: 150px;
+              height: 150px;
+              cursor: pointer;
+              border: 3px solid #ff004a;
+              border-radius: 100px;
+            "
+            onclick="document.getElementById('image-upload').click();"
+          />
+          <small style="color: #00d8ff; margin-top: 3px"
+            >Upload Profile Image(150px X 150px)</small
+          >
+        </div>
+
+        <div class="field-box">
+          <label for="username" class="input-label"> Username</label>
+          <input
+            required
+            type="text"
+            id="username"
+            placeholder="Username"
+            class="input-field"
+          />
+          <small class="error-message">This is error message</small>
+        </div>
+
+        <div class="field-box">
+          <label for="username" class="input-label">Email</label>
+          <input
+            required
+            type="email"
+            id="Email"
+            placeholder="john.doe@gmail.com"
+            class="input-field"
+          />
+          <small class="error-message">This is error message</small>
+        </div>
+
+        <div class="field-box">
+          <label for="password" class="input-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            class="input-field"
+          />
+          <small class="error-message">This is error message</small>
+        </div>
+        <div style="margin: 3px">
+          <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            style="font-size: smaller"
+            required
+          />
+          <label for="terms">I agree to the Terms and Conditions</label>
+        </div>
+
+        <button class="submit-button">SignUp</button>
+        <div>
+          Already have an account?
+          <a href="{% url 'userLogin' %}" style="color: #00d8ff">Login</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      function previewImage(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById("image-preview");
+
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            preview.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+    </script>
+  </body>
+</html>

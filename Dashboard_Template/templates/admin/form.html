@@ -1,0 +1,131 @@
+{% load static %}
+<form class="data-form">
+  <div class="form-header">ADD EMPLOYEE</div>
+  <div class="field-box">
+    <label class="input-label" for="name">Name:</label>
+    <input
+      class="input-field"
+      placeholder=" "
+      type="text"
+      id="name"
+      name="name"
+      required
+    />
+  </div>
+
+  <div class="field-box">
+    <label class="input-label" for="age">Age:</label>
+    <input
+      placeholder=" "
+      class="input-field"
+      type="number"
+      id="age"
+      name="age"
+      required
+    />
+  </div>
+
+  <div class="field-box">
+    <label class="input-label" for="role">Role:</label>
+    <select placeholder=" " class="input-field" id="role" name="role" required>
+      <option value="patient">Patient</option>
+      <option value="employee">Employee</option>
+    </select>
+  </div>
+
+  <div class="field-box">
+    <label class="input-label" for="email">Email:</label>
+    <input
+      placeholder=" "
+      class="input-field"
+      type="email"
+      id="email"
+      name="email"
+      required
+    />
+  </div>
+
+  <div class="field-box">
+    <label class="input-label" for="phone">Phone:</label>
+    <input
+      placeholder=" "
+      class="input-field"
+      type="tel"
+      id="phone"
+      name="phone"
+      required
+    />
+  </div>
+
+  <div class="field-box">
+    <label class="input-label" for="gender">Gender:</label>
+    <select
+      placeholder=" "
+      class="input-field"
+      id="gender"
+      name="gender"
+      required
+    >
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div class="field-box">
+    <label class="input-label">Services Required:</label>
+    <div class="checkbox-group">
+      <label
+        ><input type="checkbox" name="service" value="consultation" />
+        Consultation</label
+      >
+
+      <label
+        ><input type="checkbox" name="service" value="checkup" /> Checkup</label
+      >
+      <label
+        ><input type="checkbox" name="service" value="emergency" />
+        Emergency</label
+      >
+      <label
+        ><input type="checkbox" name="service" value="follow-up" />
+        Follow-up</label
+      >
+    </div>
+  </div>
+
+  <div class="field-box">
+    <label for="comments" class="input-label">Comments:</label>
+    <textarea
+      class="input-field"
+      id="comments"
+      name="comments"
+      rows="6"
+      placeholder=" "
+    ></textarea>
+  </div>
+
+  <div class="field-box">
+    <label class="input-label" for="address">Address:</label>
+    <input
+      placeholder=" "
+      class="input-field"
+      type="text"
+      id="address"
+      name="address"
+    />
+  </div>
+  <div style="display: flex; justify-content: center; width: 100%">
+    <a
+      href="{% url 'home' %}"
+      style="
+        width: 17%;
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+      "
+    >
+      <button class="submit-button">Submit</button>
+    </a>
+  </div>
+</form>

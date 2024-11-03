@@ -1,0 +1,130 @@
+{% load static %}
+<div class="dashboard-container">
+  <div class="dashboard-left">
+    <div
+      class="slider"
+      style="
+        --borderRadius: 2.5rem;
+        --quantity: 4;
+        --width: 22rem;
+        --height: 11rem;
+      "
+    >
+      <div class="slider-list">
+        <div class="item i1" style="--position: 1">
+          <img src="{% static 'images/carousel1.jpeg' %}" />
+        </div>
+        <div class="item i2" style="--position: 2">
+          <img src="{% static 'images/carousel2.jpeg' %}" />
+        </div>
+        <div class="item i3" style="--position: 3">
+          <img src="{% static 'images/carousel3.jpeg' %}" />
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-card">
+      <div style="width: 50%">
+        <h2>Hospital Overview</h2>
+        <div class="card-item">
+          <i class="sidebar-icon fas fa-user-nurse"></i>
+          <p>Doctors: <span id="doctors-count">50</span></p>
+        </div>
+        <div class="card-item">
+          <i class="sidebar-icon fas fa-user-md"></i>
+          <p>Patients: <span id="patients-count">120</span></p>
+        </div>
+        <div class="card-item">
+          <i class="sidebar-icon fas fa-user-md"></i>
+          <p>Nurses: <span id="nurses-count">30</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashbboard-table-container">
+    <table id="dashboardTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in dataItems %}
+        <tr>
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>Image info</td>
+          <td>{{ item.details }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Generate 20 rows of dummy data
+    const dataItems = Array.from({ length: 20 }, (v, i) => ({
+      id: i + 1,
+      name: `Person ${i + 1}`,
+      details: `Role ${i + 1}`,
+    }));
+
+    // Get the tbody element to insert rows
+    const tableBody = document.querySelector("#dashboardTable tbody");
+
+    // Populate the table with data
+    dataItems.forEach((item) => {
+      const row = document.createElement("tr");
+
+      // Create and append ID cell
+      const idCell = document.createElement("td");
+      idCell.textContent = item.id;
+      row.appendChild(idCell);
+
+      // Create and append Name cell
+      const nameCell = document.createElement("td");
+      nameCell.textContent = item.name;
+      row.appendChild(nameCell);
+
+      // Create and append Image cell
+      const imageCell = document.createElement("td");
+      const image = document.createElement("img");
+      image.src = item.image_url;
+      image.alt = item.name;
+      image.classList.add("data-image");
+      imageCell.appendChild(image);
+      row.appendChild(imageCell);
+
+      // Create and append Details cell
+      const detailsCell = document.createElement("td");
+      detailsCell.textContent = item.details;
+      row.appendChild(detailsCell);
+
+      // Append the row to the table body
+      tableBody.appendChild(row);
+    });
+  });
+
+  // SLIDER JAVASCRIPT
+  function modifyKeyframesAndAnimate() {
+    // Wait for 22 seconds (22000 milliseconds)
+    setTimeout(() => {
+      // Select the element with the class "animation1"
+      const element = document.querySelector(".animation1");
+
+      // Ensure the element exists
+      if (element) {
+        // Remove the existing animation class
+        element.classList.remove("animation1");
+
+        // Add the new animation class
+        element.classList.add("slide1-an2");
+      }
+    }, 8000);
+  }
+</script>
