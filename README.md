@@ -10,9 +10,12 @@ A modern and minimal front-end design for a medical dashboard, developed from sc
 - **Intuitive Navigation**: Includes a header, footer, and sidebar for smooth navigation.
 - **Modern & Minimal Design**: Simple, clean, and focused on user experience.
 
-## SEE HERE
-
+## Dashboard
 ![Dashboard Overview](Assets/MedicalDashboard.png)
+## FORM
+![Dashboard Overview](Assets/FORM.png)
+## TAble for Data representation
+![Dashboard Overview](Assets/Table.png)
 
 
 
