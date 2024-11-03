@@ -12,7 +12,7 @@ A modern and minimal front-end design for a medical dashboard, developed from sc
 
 ## SEE HERE
 
-(Assets/Medical Dashboard.png)
+(Assets/Medical-Dashboard.png)
 
 
 
