@@ -12,7 +12,8 @@ A modern and minimal front-end design for a medical dashboard, developed from sc
 
 ## SEE HERE
 
-![Image1](Assets/Medical Dashbard.png)
+![Image1](Assets/Medical Dashboard.png)
+
 
 
 
