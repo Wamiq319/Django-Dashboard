@@ -4,7 +4,7 @@ A modern and minimal front-end design for a medical dashboard, developed from sc
 
 ## Features
 
-- **Responsive Layout**: Works well on both desktop and mobile devices.
+- **Responsive Layout**: Works well on all desktop screens.
 - **Data Input Forms**: User-friendly forms for efficient data entry.
 - **Data Display Tables**: Well-organized tables for easy information management.
 - **Intuitive Navigation**: Includes a header, footer, and sidebar for smooth navigation.
